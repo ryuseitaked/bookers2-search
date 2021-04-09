@@ -2,10 +2,14 @@ class Book < ApplicationRecord
 	belongs_to :user
 
 	def self.looks(searches, words)
-		if searchs == "perfect_match"
+		if searches == "perfect_match"
 			@book = Book.where("name LIKE ?", "#{words}")
-		else
+		elsif
 			@book = Book.where("name LIKE ?", "%#{words}%")
+		elsif
+			@book = Book.where("name LIKE ?", "#{words}%")
+		elsif
+			@book = Book.where("name LIKE ?","%#{words}")
 		end
 	end
 
